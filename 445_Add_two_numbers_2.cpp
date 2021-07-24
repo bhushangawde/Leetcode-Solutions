@@ -10,6 +10,23 @@
  */
 class Solution {
 public:
+
+	// Reverse List 
+	/*ListNode* reverseList(ListNode *head)
+    {
+        ListNode *prev = nullptr;
+        
+        while(head)
+        {
+            ListNode *nextNode = head->next;
+            head->next = prev;
+            prev = head;
+            head = nextNode;
+        }
+        
+        return prev;
+    }*/
+	
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
    
         if(!l1)
