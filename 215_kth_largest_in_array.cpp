@@ -14,7 +14,18 @@ public:
         return pq.top();
     }*/
     
-    
+	// Min-heap alternate implementation
+/* 	int findKthLargest(vector<int>& nums, int k) {
+		multiset<int> mset;
+		for (int num : nums) {
+			mset.insert(num);
+			if (mset.size() > k) {
+				mset.erase(mset.begin());
+			}
+		}
+		return *mset.begin();
+	}
+ */    
     // max-heap
     /* int findKthLargest(vector<int>& nums, int k) {
         priority_queue<int> pq (nums.begin(), nums.end());
