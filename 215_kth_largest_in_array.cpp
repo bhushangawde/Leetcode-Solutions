@@ -26,6 +26,7 @@ public:
 		return *mset.begin();
 	}
  */    
+ 
     // max-heap
     /* int findKthLargest(vector<int>& nums, int k) {
         priority_queue<int> pq (nums.begin(), nums.end());
@@ -38,8 +39,15 @@ public:
     } */
 	
 	
+	// Max-heap alternate implementation
 	
-	
+	/* int findKthLargest(vector<int>& nums, int k) {
+        multiset<int, greater<int>> mset(nums.begin(), nums.end());
+        for (int i = 0; i < k - 1; i++) {
+            mset.erase(mset.begin());
+        }
+        return *mset.begin();
+    } */
 	// quick select
     
     void swap(int &a, int &b){
