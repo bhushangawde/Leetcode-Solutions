@@ -3,14 +3,12 @@ public:
     int calculate(string s) {
         int i = 0;
         int result = 0;
-        stack <int> nums, ops;
         int num = 0;
         int sign = 1;
         while(i < s.size()){
             char c = s[i];
             if(isdigit(c)){
                 num = num * 10 + (c - '0');
-                // cout<<num<<endl;
                 i++;
             }
             else if (c == '-'){
