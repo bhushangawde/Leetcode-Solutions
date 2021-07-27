@@ -20,6 +20,13 @@ public:
             queue.push_front(make_pair(k,v));
             umap[key] = queue.begin();
             
+			
+			// You can also use the splice function instead.
+			// splice() function here takes the element at the umap[key] and places it at the beginning of the list.
+			// queue.splice(queue.begin(), queue, umap[key);
+			// return umap[key]->second;
+			
+			
             return v;
         }
     }
@@ -37,7 +44,14 @@ public:
         else {
             queue.erase(umap[key]);
             queue.push_front(make_pair(key,value));
-            umap[key] = queue.begin();
+			umap[key] = queue.begin();
+			
+			// You can also use the splice function instead.
+			// splice() function here takes the element at the umap[key] and places it at the beginning of the list.
+			// queue.splice(queue.begin(), queue, umap[key);
+			// umap[key]->second = value;
+			
+            
         }
     }
 };
