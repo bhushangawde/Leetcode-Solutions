@@ -9,6 +9,30 @@
  */
 class Solution {
 public:
+
+	// Inorder Iterative
+	void inOrderIter(TreeNode* root, vector<int>& x){
+        if(root == NULL)
+            return;
+        
+        stack <TreeNode* > s;
+        TreeNode *node = root;
+        
+        while(node!=NULL || !s.empty()){
+            while(node!=NULL){
+                s.push(node);
+                node = node->left;
+            }
+            
+            node = s.top();
+            s.pop();
+            x.push_back(node->val);
+            
+            node = node->right;
+        }
+    }
+	
+	
     void inOrder(TreeNode* root, vector<int>& x){
         if(root == NULL)
             return;
