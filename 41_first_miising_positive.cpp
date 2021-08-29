@@ -1,12 +1,13 @@
 class Solution {
 public:
     
-    void swap (int &a, int &b){
-        int temp = a;
-        a = b; 
-        b = temp;
-    }
-    
+    // void swap (int &a, int &b){
+    //     int temp = a;
+    //     a = b; 
+    //     b = temp;
+    // }
+    // So, apparently, not using our own swap function gives a boost of 90ms. :O
+	
     int firstMissingPositive(vector<int>& nums) {
         int size = nums.size();
         int i = 0 ;
