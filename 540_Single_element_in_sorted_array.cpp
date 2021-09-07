@@ -15,10 +15,10 @@ public:
         while(l<=r){
             mid = (l + r)/2;
             
-            if((mid + 1 < size && arr[mid] != arr[mid + 1]) && (mid - 1 > -1 && arr[mid] != arr[mid - 1]))
+            if((arr[mid] != arr[mid + 1]) && (arr[mid] != arr[mid - 1]))
                 return arr[mid];
             
-            else if((mid + 1 < size && arr[mid] == arr[mid + 1] && mid%2 == 0)|| (mid - 1 > -1 && arr[mid] == arr[mid - 1] && mid%2 == 1)){
+            else if((arr[mid] == arr[mid + 1] && mid%2 == 0)|| (arr[mid] == arr[mid - 1] && mid%2 == 1)){
                 l = mid + 1;
             }               
             else{
