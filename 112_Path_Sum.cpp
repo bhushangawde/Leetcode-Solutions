@@ -11,7 +11,7 @@ class Solution {
 public:
    
     
-    bool pathSum(TreeNode *root, int sum, int &curr){
+/*     bool pathSum(TreeNode *root, int sum, int &curr){
         if( root==NULL)
             return false;
         
@@ -35,5 +35,19 @@ public:
             return false;
         int curr=0;
         return(pathSum(root,sum,curr));
+    } */
+	
+	
+	// Updated Solution
+	bool hasPathSum(TreeNode* root, int targetSum) {
+        if(!root)
+            return false;
+        
+        if(targetSum == root->val && !root->left && !root->right)
+            return true;
+        
+        return hasPathSum(root->left, targetSum-root->val) || hasPathSum(root->right, targetSum-root->val);
+        
     }
+	
 };
