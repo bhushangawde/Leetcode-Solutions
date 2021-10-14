@@ -25,31 +25,19 @@ public:
     }
     
     bool searchUtil(string word, int idx, TrieNode *curr){
-        int id;
- 
+        
+        if(idx == word.size())
+            return curr->isEndOfWord;
+        
         if(curr == NULL)
             return false;
-        
-        if(idx == word.size() - 1){
-            id = word[idx] - 'a';
-            if(id>=0 && id <=25){
-                return curr->children[id] && curr->children[id]->isEndOfWord;
-            }
-            else{
-                for(int i = 0; i < 26; i++){
-                    if(curr->children[i] && curr->children[i]->isEndOfWord)
-                        return true;
-                }
-            }
-            return false;
-        }
-        
-        id = word[idx] - 'a';
+    
+        int id = word[idx] - 'a';
         if(id>=0 && id <=25)
-            return searchUtil(word, idx + 1, curr->children[id]);
+            return curr->children[id] && searchUtil(word, idx + 1, curr->children[id]);
         
         for(int i = 0; i < 26; i++){
-            if(searchUtil(word, idx + 1, curr->children[i]))
+            if(curr->children[i] && searchUtil(word, idx + 1, curr->children[i]))
                 return true;
         }
         
