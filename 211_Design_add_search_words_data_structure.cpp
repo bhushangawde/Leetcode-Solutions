@@ -55,3 +55,51 @@ public:
  * obj->addWord(word);
  * bool param_2 = obj->search(word);
  */
+ 
+ 
+ 
+ /*   Implementation using unordered map 
+ 
+ 
+ class WordDictionary {
+public:
+    unordered_map<int, vector<string>> mp;
+    
+    WordDictionary() {
+        
+    }
+    
+    void addWord(string word) {
+        mp[word.size()].push_back(word);
+    }
+    
+    bool isEqual(string word1 , string word2){
+        for(int i = 0 ; i < word1.size(); i++){
+            if(word1[i] == '.')
+                continue;
+            if(word1[i] != word2[i])
+                return false;
+        }    
+        return true;
+    }
+    
+    bool search(string word) {
+        int len = word.size();
+        
+        for(string s : mp[word.size()]){
+            if(isEqual(word, s))
+                return true;
+        }
+        return false;
+    }
+};
+
+/**
+ * Your WordDictionary object will be instantiated and called as such:
+ * WordDictionary* obj = new WordDictionary();
+ * obj->addWord(word);
+ * bool param_2 = obj->search(word);
+ */
+ 
+ 
+ */
