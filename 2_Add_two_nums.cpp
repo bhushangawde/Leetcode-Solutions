@@ -8,7 +8,7 @@
  */
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    /* ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         int carry = 0;
         if(!l1 && !l2)
             return NULL;
@@ -70,5 +70,44 @@ public:
             L->next = new ListNode(1);
         }
         return temp->next;
+    } */
+	
+	
+	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int carry =0;
+        ListNode *dummy = new ListNode(0, NULL);
+        ListNode* tail = NULL;
+        while(l1 || l2){
+            int val1 = 0;
+            if(l1){
+                val1 = l1->val;
+            }
+            int val2 = 0;
+            if(l2){
+                val2 = l2->val;
+            }
+            int sum = val1 + val2 + carry;
+            carry = sum/10;
+            
+            if(!tail){
+                tail = new ListNode(sum%10);
+                dummy->next = tail;
+            }
+            else{
+                tail->next = new ListNode(sum%10);
+                tail = tail->next;
+            }
+            if(l1)
+                l1 = l1->next;
+            if(l2)
+                l2 = l2->next;
+            
+        }
+        
+        if(carry){
+            tail->next = new ListNode(1);
+        }
+        
+        return dummy->next;
     }
 };
