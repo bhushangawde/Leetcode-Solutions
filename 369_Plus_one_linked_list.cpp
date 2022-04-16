@@ -33,4 +33,29 @@ public:
         }
         return head;
     }
+	
+	// Iterative
+	/* ListNode* plusOne(ListNode* head) {
+        ListNode* sentinel = new ListNode(0,head);
+        ListNode* newNode = sentinel;
+        
+        while(head!= NULL){
+            if(head->val!=9){
+                newNode = head;
+            }
+            head = head->next;
+        }
+        
+        newNode->val += 1;
+        newNode = newNode->next;
+        while(newNode){
+            newNode->val = 0;
+            newNode = newNode->next;
+        }
+        
+        if(sentinel->val == 1){
+            return sentinel;
+        }
+        return sentinel->next;
+    } */
 };
