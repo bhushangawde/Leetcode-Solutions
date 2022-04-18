@@ -1,4 +1,4 @@
 ## Leetcode
 
-This repository consists of the solutions to the problems solved by me on LeetCode.
+This repository consists of my solutions to Leetcode problems.
 
