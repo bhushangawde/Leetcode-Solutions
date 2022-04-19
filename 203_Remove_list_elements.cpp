@@ -30,4 +30,28 @@ public:
         
         return head;
     }
+	
+	
+	
+	// Sentinel node + delete the node with val = val
+	/* ListNode* removeElements(ListNode* head, int val) {
+        if(!head)
+            return NULL;
+        
+        ListNode* sentinel = new ListNode(0, head);
+        ListNode* curr = sentinel;
+        
+        while(curr->next){
+            if(curr->next->val == val){
+                ListNode* temp = curr->next;
+                curr->next = curr->next->next;
+                delete temp;
+            }
+            else{
+                curr = curr->next;
+            }
+        }
+        
+        return sentinel->next;
+    } */
 };
