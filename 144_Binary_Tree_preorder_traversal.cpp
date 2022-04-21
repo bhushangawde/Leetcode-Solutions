@@ -25,4 +25,30 @@ public:
         preorder(root, vec);
         return vec;
     }
+	
+	
+	
+	//Iterative solution using stack
+	/* vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> vec;
+        stack<TreeNode*> st;
+        
+        if(root == NULL)
+            return vec;
+        
+        st.push(root);
+        while(!st.empty()){
+            TreeNode* curr = st.top();
+            st.pop();
+            vec.push_back(curr->val);
+            
+            if(curr->right)
+                st.push(curr->right);
+            
+            if(curr->left)
+                st.push(curr->left);
+        }
+        
+        return vec;
+    } */
 };
