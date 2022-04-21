@@ -11,7 +11,7 @@ class Solution {
 public:
 
 	// Inorder Iterative
-	void inOrderIter(TreeNode* root, vector<int>& x){
+	/* void inOrderIter(TreeNode* root, vector<int>& x){
         if(root == NULL)
             return;
         
@@ -30,7 +30,7 @@ public:
             
             node = node->right;
         }
-    }
+    } */
 	
 	
     void inOrder(TreeNode* root, vector<int>& x){
