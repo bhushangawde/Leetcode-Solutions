@@ -26,4 +26,32 @@ public:
         postorder(root, vec);
         return vec;
     }
+	
+	
+	// Iterative solution using stack with reverse function
+	/* vector<int> postorderTraversal(TreeNode* root) {
+        
+        vector<int> vec;
+        stack<TreeNode*> st;
+        
+        if(!root){
+            return vec;
+        }
+        
+        st.push(root);
+        while(!st.empty()){
+            TreeNode* node = st.top();
+            st.pop();
+            vec.push_back(node->val);
+            
+            if(node->left){
+                st.push(node->left);
+            }
+            if(node->right){
+                st.push(node->right);
+            }
+        }
+        reverse(vec.begin(), vec.end());
+        return vec;
+    } */
 };
