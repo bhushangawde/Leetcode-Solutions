@@ -28,6 +28,37 @@ public:
     }
 	
 	
+	// Iterative solution using stack without reverse
+	/* vector<int> postorderTraversal(TreeNode* root) {
+        
+        vector<int> vec;
+        stack<TreeNode*> st;
+        TreeNode *prev = NULL;
+        if(!root){
+            return vec;
+        }
+        
+        while(!st.empty() || root!= NULL){
+            if(root != NULL){
+                st.push(root);
+                root = root->left;
+            }
+            else{
+                TreeNode* node = st.top();
+                if(node->right && prev != node->right){
+                    root = node->right;
+                }
+                else{
+                    vec.push_back(node->val);
+                    st.pop();
+                    prev = node;
+                }
+            }
+        }
+        
+        return vec;
+    } */
+	
 	// Iterative solution using stack with reverse function
 	/* vector<int> postorderTraversal(TreeNode* root) {
         
