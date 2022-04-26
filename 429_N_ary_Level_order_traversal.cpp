@@ -42,8 +42,8 @@ public:
             else{
                 // cout<<node->val<<endl;
                 tempVec.push_back(node->val);
-                for(auto x : node->children){
-                    q.push(x);
+                for(int i = 0; i < node->children.size(); i++){
+                    q.push(node->children[i]);
                 }
             }
         }
