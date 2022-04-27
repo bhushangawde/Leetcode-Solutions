@@ -52,4 +52,28 @@ public:
         }
         return ans;
     }
+	
+	// Recursive solution
+	
+	/* vector<vector<int>> ans;
+    
+    void DFS(Node* root, int level){
+        if(!root)
+            return;
+        if(level == ans.size()){
+            ans.push_back(vector<int>());
+        }
+        ans[level].push_back(root->val);
+        for(int i = 0 ; i < root->children.size(); i++){
+            DFS(root->children[i], level + 1);
+        }
+    }
+    vector<vector<int>> levelOrder(Node* root) {
+        if(!root){
+            return ans;
+        }
+        DFS(root, 0);
+        return ans;
+    } */
+	
 };
