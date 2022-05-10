@@ -46,4 +46,37 @@ public:
         
     }
 	
+	
+	// Iterative solution
+	/* bool hasPathSum(TreeNode* root, int sum) {
+        if(!root)
+            return false;
+        stack<TreeNode*> nodeSt;
+        stack<int> sumSt;
+        nodeSt.push(root);
+        sumSt.push(sum - root->val);
+        
+        while(!nodeSt.empty()){
+            TreeNode* node = nodeSt.top();
+            nodeSt.pop();
+            
+            int val = sumSt.top();
+            sumSt.pop();
+            
+            if(val == 0 && !node->left && !node->right){
+                return true;
+            }
+            
+            if(node->left){
+                nodeSt.push(node->left);
+                sumSt.push(val - node->left->val);
+            }
+            if(node->right){
+                nodeSt.push(node->right);
+                sumSt.push(val - node->right->val);
+            }
+        }
+        
+        return false;
+    } */
 };
