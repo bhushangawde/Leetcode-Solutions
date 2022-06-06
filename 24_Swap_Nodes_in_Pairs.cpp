@@ -3,7 +3,9 @@
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
 class Solution {
@@ -12,23 +14,30 @@ public:
         if(!head || !head->next)
             return head;
         
-        ListNode *p = head;
-        ListNode *prev = NULL;
-        ListNode *next = NULL;
-        ListNode *nextNext = NULL;
-        head = head->next;
-        while(p && p->next){
-            if(prev){
-                prev->next = p->next;
-            }
-            next = p->next;
-            nextNext = next->next;
-            next->next = p;
-            p->next = nextNext;
-            prev = p;
-            p=p->next;
-        }
+        ListNode* first = head;
+        ListNode* second = head->next;
+        ListNode* newHead = second;
+        ListNode* prev = NULL;
         
-        return head;
+        while(first && second){
+            
+            // Swapping the next of both nodes
+            first->next = second->next;
+            second->next = first;
+            
+            
+            // Changing the next of previous node
+            if(prev){
+                prev->next = second;
+            }
+            
+            // Shifting the pointers for the next run
+            prev = first;
+            first = first->next;
+            if(first){
+                second = first->next;
+            }
+        }
+        return newHead;
     }
 };
