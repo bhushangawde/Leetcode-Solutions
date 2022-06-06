@@ -40,4 +40,21 @@ public:
         }
         return newHead;
     }
+	
+	
+	// Recurrsive Solution
+	/* ListNode* swapPairs(ListNode* head) {
+        if(!head || !head->next)
+            return head;
+	
+        ListNode *first = head;
+        ListNode *second = head->next;
+		
+		// Swapping the first and second recursively
+        first->next = swapPairs(second->next);
+        second->next = first;
+        
+        return second;
+            
+    } */
 };
