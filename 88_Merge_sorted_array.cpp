@@ -20,13 +20,11 @@ public:
             
             if(nums1[nums1_ptr] > nums2[nums2_ptr]){
                 nums1[write_ptr] = nums1[nums1_ptr];
-                // cout<<"1: " << nums1[write_ptr] << endl;
                 nums1_ptr--;
                 write_ptr--;
             }
             else {
                 nums1[write_ptr] = nums2[nums2_ptr];
-                // cout<<"2: " << nums1[write_ptr] << endl;
                 nums2_ptr--;
                 write_ptr--;
             }
@@ -35,7 +33,6 @@ public:
         if(write_ptr != -1 && nums1_ptr == -1){
             while(write_ptr != -1 && nums2_ptr != -1){
                 nums1[write_ptr] = nums2[nums2_ptr];
-                // cout<<"3: " << nums1[write_ptr] << endl;
                 nums2_ptr--;
                 write_ptr--;
             }
