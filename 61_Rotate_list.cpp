@@ -14,31 +14,25 @@ public:
         if(!head || !head->next || k == 0)
             return head;
     
-        int count = 0;
+        int len = 1;
         ListNode *curr = head;
-        while(curr){
-            count++;
+        while(curr->next){
+            len++;
             curr = curr->next;
         }
         
-        if(k >= count){
-            k = k % count;
-        }
-        
+        k = k % len;
         if(k == 0)
             return head;
         
-        curr = head;
         ListNode* tail = head;
         ListNode *newHead = NULL;
-        count = 0;
-        while(count < k){
-            curr = curr->next;
-            count++;
-        }
-        while(curr->next){
-            curr = curr->next;
+        
+        
+        int count = 1;
+        while(count < len - k){
             tail = tail->next;
+            count++;
         }
         
         newHead = tail->next;
