@@ -1,3 +1,70 @@
+
+// Iterative solution
+class Solution {
+public:
+    
+    int first(vector<int> &nums, int target){
+        int low = 0;
+        int high = nums.size() - 1;
+        int mid;
+        int result = -1;
+        while(low <= high){
+            mid = low + (high - low) / 2;
+            if(nums[mid] == target){
+                result = mid;
+                high = mid - 1;
+            }
+            else if(nums[mid] < target){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;
+            }
+        }
+        
+        return result;
+    }
+    
+    int second(vector<int> &nums, int target){
+        int low = 0;
+        int high = nums.size() - 1;
+        int mid;
+        int result = -1;
+        while(low <= high){
+            mid = low + (high - low) / 2;
+            if(nums[mid] == target){
+                result = mid;
+                low = mid + 1;
+            }
+            else if(nums[mid] < target){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;
+            }
+        }
+        
+        return result;
+    }
+    
+    vector<int> searchRange(vector<int>& nums, int target) {
+        if(nums.size() == 0)
+            return vector<int>{-1, -1};
+        int firstOcc, secondOcc;
+        firstOcc = first(nums, target);
+        secondOcc = second(nums, target);
+        // cout << firstOcc << endl;
+        // cout << secondOcc << endl;
+        vector<int> ans;
+        ans.push_back(firstOcc);
+        ans.push_back(secondOcc);
+        return ans;
+    }
+};
+
+
+
+// Recursive solution
 class Solution {
 public:
     
