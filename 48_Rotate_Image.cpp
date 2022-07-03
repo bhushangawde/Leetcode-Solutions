@@ -5,9 +5,7 @@ public:
         int low = 0;
         int high = matrixRow.size() - 1;
         while(low < high){
-            int temp = matrixRow[low];
-            matrixRow[low] = matrixRow[high];
-            matrixRow[high] = temp;
+            swap(matrixRow[low], matrixRow[high]);
             low++;
             high--;
         }
@@ -18,9 +16,7 @@ public:
         
         for(int i = 0; i < n; i++){
             for(int j = 0; j < i; j++){
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+                swap(matrix[i][j], matrix[j][i]);
             }
         }
         
