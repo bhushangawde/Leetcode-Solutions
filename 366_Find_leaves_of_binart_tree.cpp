@@ -9,8 +9,34 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
- 
- // Brute force approach by removing the node
+
+// Best Solution O(n) time and O(1) space 
+class Solution {
+public:
+    
+    int getLeaves(TreeNode *root, vector<vector<int>>& ans){
+        if(!root)
+            return -1;
+        
+        int l = getLeaves(root->left, ans);
+        int r = getLeaves(root->right, ans);
+        int height = 1 + max(l, r);
+        if(ans.size() < height + 1)
+            ans.resize(height + 1);
+        ans[height].push_back(root->val);
+        
+        return height;
+    }
+    
+    vector<vector<int>> findLeaves(TreeNode* root) {
+        vector<vector<int>> ans;
+        getLeaves(root, ans);
+        return ans;
+    }
+};
+
+
+ // Brute force approach by removing the node O(n2) time and O(n) space
 class Solution {
 public:
     
