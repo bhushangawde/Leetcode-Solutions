@@ -32,18 +32,19 @@ public:
         
         return profit;
     }
-    
-    // Another solution
-	
-    // int maxProfit(vector<int>& prices) {
-    //     int profit = 0;
-    //     for(int i = 1 ; i < prices.size(); i++){
-    //         if(prices[i] > prices[i-1])
-    //             profit += prices[i] - prices[i-1];
-    //     }    
-    //     return profit;
-    // }
-    
-    
-    
 };
+
+// Dynamic Programming solution
+/* 
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int size = prices.size();
+        vector<int> profit(size, 0);
+        profit[0] = 0;
+        for(int i = 1; i < size; i++){
+            profit[i] = max(profit[i-1], profit[i-1] + prices[i] - prices[i-1]);
+        }
+        return profit[size - 1];
+    }
+}; */
