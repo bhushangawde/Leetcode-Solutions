@@ -52,10 +52,7 @@ public:
             return solve(board, row ,col+1);
         
         for(int num = 1 ; num <= 9; num++){
-            // cout<<isSafe(board, row, col, num)<<endl;
             if(isSafe(board, row, col, num) && board[row][col] == '.'){
-                // cout<<row<< " "<<col<<endl;
-                // cout<<char(num + 48)<<endl;
                 board[row][col] = char(num + 48);
                 if(solve(board, row, col+1))
                     return true;
