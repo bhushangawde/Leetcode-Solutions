@@ -16,17 +16,39 @@ public:
         if(!root)
             return;
         
-        TreeNode* temp;
         invertTree(root->left);
         invertTree(root->right);
-        
+
+        TreeNode* temp;
         temp = root->left;
         root->left = root->right;
         root->right = temp;
         
     }
+
+    void mirrorIter(TreeNode* root){
+        if(!root)
+            return;
+
+        queue<TreeNode*> qu;
+        qu.push(root);
+        while(!qu.empty()){
+            TreeNode* curr = qu.front();
+            qu.pop();
+            TreeNode* temp = curr->left;
+            curr->left = curr->right;
+            curr->right = temp;
+
+            if(curr->left)
+                qu.push(curr->left);
+            if(curr->right)
+                qu.push(curr->right);
+        }
+    }
+
     TreeNode* invertTree(TreeNode* root) {
-        mirror(root);
+        // mirror(root);
+        mirrorIter(root);
         return root;
     }
 };
