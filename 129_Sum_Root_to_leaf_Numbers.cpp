@@ -56,3 +56,35 @@ public:
         return sum;
     }
 };
+
+// Iterative using stack
+class Solution {
+public:
+
+    int solveIter(TreeNode* node){
+        stack<pair<TreeNode*, int>>st;
+        st.push({node, 0});
+        int sum = 0;
+        while(!st.empty()){
+            pair<TreeNode*, int> p = st.top();
+            st.pop();
+            int currSum = p.second;
+            TreeNode* temp = p.first;
+            currSum = currSum*10 + temp->val;
+            if(!temp->left && !temp->right)
+                sum += currSum;
+            if(temp->left)
+                st.push({temp->left, currSum});
+            if(temp->right)
+                st.push({temp->right, currSum});
+        }
+        return sum;
+    }
+
+    int sumNumbers(TreeNode* root) {
+        int currSum = 0;
+        // int sum = solve(root, currSum);
+        int sum = solveIter(root);
+        return sum;
+    }
+};
