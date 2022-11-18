@@ -34,3 +34,25 @@ public:
         return sum;
     }
 };
+
+// Pass by value
+class Solution {
+public:
+
+    int solve(TreeNode* node, int currSum){
+        if(!node){
+            return 0;
+        }
+        currSum = currSum*10 + node->val;
+        if(!node->left && !node->right){
+            return currSum;
+        }
+        return solve(node->left, currSum) + solve(node->right, currSum);
+    }
+
+    int sumNumbers(TreeNode* root) {
+        int currSum = 0;
+        int sum = solve(root, currSum);
+        return sum;
+    }
+};
