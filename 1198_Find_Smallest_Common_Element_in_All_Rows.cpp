@@ -15,3 +15,21 @@ public:
         return -1;
     }
 };
+
+// Cache locality
+class Solution {
+public:
+    int smallestCommonElement(vector<vector<int>>& mat) {
+        map<int,int> ump;
+        int rows = mat.size();
+        int cols = mat[0].size();
+        for(int i = 0 ; i < cols; i++){
+            for(int j = 0 ; j < rows; j++){
+                ump[mat[j][i]] += 1;
+                if(ump[mat[j][i]] == rows)
+                    return mat[j][i];
+            }
+        }
+        return -1;
+    }
+};
