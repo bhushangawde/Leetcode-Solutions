@@ -14,13 +14,6 @@ public:
                 currentState[i] = '+';
             }
         }
-        // if(currentState[0] == '+' && currentState[size - 1] == '+'){
-        //         currentState[size - 1] = '-';
-        //         currentState[0] = '-';
-        //         ans.push_back(currentState);
-        //         currentState[size - 1] = '+';
-        //         currentState[0] = '+';
-        // }
         return ans;
     }
 };
