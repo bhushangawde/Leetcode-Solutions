@@ -50,3 +50,23 @@ public:
         return -1;
     }
 };
+
+// Binary Search - O(RClogC)
+class Solution {
+public:
+    int smallestCommonElement(vector<vector<int>>& mat) {
+        int rows = mat.size();
+        int cols = mat[0].size();
+        for(int j = 0 ; j < cols; j++){
+            bool found = true;
+            for(int i = 1 ; i < rows; i++){
+                found = binary_search(begin(mat[i]), end(mat[i]), mat[0][j]);
+                if(!found)
+                    break;
+            }
+            if(found)
+                return mat[0][j];
+        }
+        return -1;
+    }
+};
