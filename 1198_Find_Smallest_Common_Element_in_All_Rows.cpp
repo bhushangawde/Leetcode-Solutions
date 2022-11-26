@@ -1,4 +1,4 @@
-// Simple solution
+// Brute force Simple solution - O(RClogRC)
 class Solution {
 public:
     int smallestCommonElement(vector<vector<int>>& mat) {
@@ -16,11 +16,28 @@ public:
     }
 };
 
-// Cache locality
+// Cache locality - Optimized O(RClogRC)
 class Solution {
 public:
     int smallestCommonElement(vector<vector<int>>& mat) {
         map<int,int> ump;
+        int rows = mat.size();
+        int cols = mat[0].size();
+        for(int i = 0 ; i < cols; i++){
+            for(int j = 0 ; j < rows; j++){
+                ump[mat[j][i]] += 1;
+                if(ump[mat[j][i]] == rows)
+                    return mat[j][i];
+            }
+        }
+        return -1;
+    }
+};
+// Replace with int array - (O(RC))
+class Solution {
+public:
+    int smallestCommonElement(vector<vector<int>>& mat) {
+        int ump[10001] = {0};
         int rows = mat.size();
         int cols = mat[0].size();
         for(int i = 0 ; i < cols; i++){
