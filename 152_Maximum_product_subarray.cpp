@@ -1,4 +1,24 @@
 
+// Single Pass
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int currProdLeft = 1;
+        int currProdRight = 1;
+        int maxProd = INT_MIN;
+        int n = nums.size();
+        for(int i = 0 ; i < n; i++){
+            currProdLeft *= nums[i];
+            currProdRight *= nums[n - i - 1];
+            maxProd = max(maxProd, max(currProdLeft,currProdRight));
+            if(currProdLeft == 0)
+                currProdLeft = 1;
+            if(currProdRight == 0)
+                currProdRight = 1;
+        }
+        return maxProd;
+    }
+};
 
 // Two passes
 class Solution {
