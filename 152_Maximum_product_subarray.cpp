@@ -1,3 +1,21 @@
+// Single pass solution 2
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int maxProd = nums[0];
+        int maxProdLeft = nums[0];
+        int minProdLeft = nums[0];
+        int n = nums.size();
+        for(int i = 1 ; i < n; i++){
+            int prevMaxLeft = maxProdLeft;
+            int prevMinLeft = minProdLeft;
+            maxProdLeft = max(nums[i], max(nums[i]*prevMaxLeft, nums[i]*prevMinLeft));
+            minProdLeft = min(nums[i], min(nums[i]*prevMaxLeft, nums[i]*prevMinLeft));
+            maxProd = max(maxProd, maxProdLeft);
+        }
+        return maxProd;
+    }
+};
 
 // Single Pass
 class Solution {
