@@ -58,6 +58,13 @@ public:
         return nums[k - 1];
     } */
 
+
+	// Partial sort
+	/* int findKthLargest(vector<int>& nums, int k) {
+        partial_sort(nums.begin(), nums.begin() + k, nums.end(), greater<int>());
+        return nums[k - 1];
+    } */
+	
     void swap(int &a, int &b){
         int temp = a;
         a = b;
