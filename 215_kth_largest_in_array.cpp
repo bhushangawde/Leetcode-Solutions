@@ -49,7 +49,15 @@ public:
         return *mset.begin();
     } */
 	// quick select
-    
+	
+	
+	
+	// nth_element 
+    /* int findKthLargest(vector<int>& nums, int k) {
+        nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater<int>());
+        return nums[k - 1];
+    } */
+
     void swap(int &a, int &b){
         int temp = a;
         a = b;
