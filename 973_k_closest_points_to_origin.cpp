@@ -1,4 +1,4 @@
-// Using Priority Queue max heapcheck
+// Using Priority Queue max heap 
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
@@ -24,31 +24,35 @@ public:
     }
 };  
 
+// Using Priority Queue max heap alternate solution
 class Solution {
 public:
     
-//     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-//         priority_queue<pair<int,vector<int>>> maxh;
-//         vector<vector<int>> ans;
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        priority_queue<pair<int,vector<int>>> maxh;
+        vector<vector<int>> ans;
         
-//         for(int i = 0 ; i < points.size(); i++){
-//             maxh.push({points[i][0]*points[i][0] + points[i][1]*points[i][1], points[i]});
+        for(int i = 0 ; i < points.size(); i++){
+            maxh.push({points[i][0]*points[i][0] + points[i][1]*points[i][1], points[i]});
             
-//             if(maxh.size() > k)
-//                 maxh.pop();
-//         }
+            if(maxh.size() > k)
+                maxh.pop();
+        }
         
-//         while(maxh.size() > 0){
-//             ans.push_back(maxh.top().second);
-//             maxh.pop();
-//         }
+        while(maxh.size() > 0){
+            ans.push_back(maxh.top().second);
+            maxh.pop();
+        }
         
-//         return ans;
-//     }
+        return ans;
+    }
+};
+
+// QUICKSELECT IMPLEMENTATION
+class Solution {
+public:
     
-	
-	// QUICKSELECT IMPLEMENTATION
-    int distance(int x, int y){
+	int distance(int x, int y){
         return x*x + y*y;
     }
     
