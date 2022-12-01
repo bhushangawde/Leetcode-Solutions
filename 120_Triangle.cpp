@@ -1,4 +1,4 @@
-// O(n) space solution
+// Bottom-up O(n) space solution
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
@@ -23,7 +23,7 @@ public:
     }
 };
 
-// O(n2) space solution
+// Bottom-up O(n2) space solution
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
@@ -50,5 +50,27 @@ public:
             min_ = min(min_, dp[size][i]);
         }
         return min_;
+    }
+};
+
+// Top down recursive + memoization
+class Solution {
+public:
+
+    int dfs(vector<vector<int>>& triangle, int row, int col, int n, vector<vector<int>>& dp){
+        if(row == n)
+            return 0;
+        if(dp[row][col] != -1)
+            return dp[row][col];
+        int downSum = triangle[row][col] + dfs(triangle, row + 1, col, n, dp);
+        int downRightSum = triangle[row][col] + dfs(triangle, row + 1, col + 1, n, dp);
+
+        return dp[row][col] = min(downSum, downRightSum);
+    }
+
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int size = triangle.size();
+        vector<vector<int>>dp(size, vector<int>(size, -1));
+        return dfs(triangle, 0, 0, size, dp);
     }
 };
