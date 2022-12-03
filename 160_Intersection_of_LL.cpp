@@ -1,4 +1,42 @@
-ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* hA = headA;
+        ListNode* hB = headB;
+        bool fA = false, fB = false;
+        if(!headA || !headB)
+            return NULL;
+
+        while(hA != hB && hA && hB){
+            
+            hA = hA->next;
+            hB = hB->next;
+
+            if(hA == NULL && !fA){
+                hA = headB;
+                fA = true;
+            }
+            
+            if(hB == NULL && !fB){
+                hB = headA;
+                fB = true;
+            }
+        }
+        if(hA)
+            return hA;
+        return NULL;
+    }
+};
+
+/* ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
 {
     ListNode *p1 = headA;
     ListNode *p2 = headB;
@@ -14,3 +52,4 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
     }
     return p1;
 }
+ */
