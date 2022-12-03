@@ -32,3 +32,29 @@ public:
         return res;
     }
 };
+
+// Solution 2
+class Solution {
+public:
+    
+    int solve(TreeNode* root, int &ans){
+        if(!root)
+            return 0;
+        
+        int leftSum = max(0, solve(root->left, ans));
+        int rightSum = max(0, solve(root->right, ans));
+
+        int temp = max(leftSum, rightSum) + root->val;
+        
+        int res = leftSum + rightSum + root->val;
+        ans = max(res, ans);
+        
+        return temp;
+    }
+    
+    int maxPathSum(TreeNode* root) {
+        int ans = INT_MIN;
+        int temp = solve(root, ans);
+        return ans;
+    }
+};
