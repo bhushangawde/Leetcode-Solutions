@@ -25,3 +25,8 @@ public:
         }
     }
 };
+
+// Library solution
+void nextPermutation(vector<int>& nums) {
+    next_permutation(begin(nums), end(nums));
+}
