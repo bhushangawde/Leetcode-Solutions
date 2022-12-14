@@ -1,3 +1,19 @@
+// O(1) extra space
+class Solution {
+public:
+
+    int rob(vector<int>& nums) {
+        int prev_prev = 0;
+        int prev = nums[0];
+        int curr;
+        for(int i = 2; i <= nums.size(); i++){
+            curr = max(nums[i-1] + prev_prev, prev);
+            prev_prev = prev;
+            prev = curr;
+        }
+        return prev;
+    }
+};
 
 // Bottom - Up DP
 class Solution {
