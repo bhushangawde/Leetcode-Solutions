@@ -59,6 +59,29 @@ public:
     }
 };
 
+// Recursion + Memoization
+class Solution {
+public:
+    int solve(vector<vector<int>> &dp, string text1, string text2, int sz1, int sz2){
+        if(sz1 == 0 || sz2 == 0)
+            return 0;
+        
+        if(dp[sz1][sz2] != -1)
+            return dp[sz1][sz2];
+        
+        if(text1[sz1 - 1] == text2[sz2 - 1])
+            return dp[sz1][sz2] = 1 + solve(dp, text1, text2, sz1 - 1 ,sz2 - 1);
+        else 
+            return dp[sz1][sz2] = max(solve(dp, text1, text2, sz1, sz2 - 1), solve(dp, text1, text2, sz1 - 1 ,sz2));
+    }
+
+    int longestCommonSubsequence(string text1, string text2) {
+        int size1 = text1.size();
+        int size2 = text2.size();
+        vector<vector<int>> dp(size1 + 1, vector<int>(size2 + 1, -1));
+        return solve(dp, text1, text2, size1, size2);
+    }
+};
 
 // Plain recursive
 class Solution {
