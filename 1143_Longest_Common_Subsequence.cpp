@@ -58,3 +58,25 @@ public:
         return dp[size1][size2];
     }
 };
+
+
+// Plain recursive
+class Solution {
+public:
+    int solve(string text1, string text2, int sz1, int sz2){
+        if(sz1 == 0 || sz2 == 0)
+            return 0;
+        
+        if(text1[sz1 - 1] == text2[sz2 - 1])
+            return 1 + solve(text1, text2, sz1 - 1 ,sz2 - 1);
+        
+        return max(solve(text1, text2, sz1, sz2 - 1), solve(text1, text2, sz1 - 1 ,sz2));
+    }
+
+    int longestCommonSubsequence(string text1, string text2) {
+        int size1 = text1.size();
+        int size2 = text2.size();
+        
+        return solve(text1, text2, size1, size2);
+    }
+};
