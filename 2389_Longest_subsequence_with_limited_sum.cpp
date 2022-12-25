@@ -16,6 +16,28 @@ public:
     }
 };
 
+// O(n2) better solution
+class Solution {
+public:
+    vector<int> answerQueries(vector<int>& nums, vector<int>& queries) {
+        vector<int> answer;
+        int count = 0;
+        sort(nums.begin(),nums.end());
+        for(int i = 1 ; i < nums.size(); i++)
+            nums[i] += nums[i-1];
+        
+        for(int i = 0 ; i < queries.size(); i++){
+            int j;
+            for(j = 0; j < nums.size(); j++){
+                if(queries[i] < nums[j])
+                    break;
+            }
+            answer.push_back(j);
+        }  
+        return answer;
+    }
+};
+
 // O(n2)
 class Solution {
 public:
