@@ -1,3 +1,22 @@
+// Using single map
+class Solution {
+public:
+    vector<int> intersect(vector<int>& a, vector<int>& b) {
+		unordered_map<int, int> ctr;
+		vector<int> out;
+		
+        for (auto e : a)
+			ctr[e]++;
+
+		for (auto e : b){
+			if (ctr[e] > 0){
+                out.push_back(e);
+                ctr[e]--;
+            }
+        }
+		return out;
+ 	}
+};
 
 // Using 2 maps
 class Solution {
