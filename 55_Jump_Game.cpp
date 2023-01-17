@@ -1,3 +1,33 @@
+// Bottom-up DP
+class Solution {
+public:
+
+    bool canJump(vector<int>& nums) {
+        int size = nums.size();
+        if(size < 2)
+            return true;
+        vector<bool> dp(nums.size(), false);
+        dp[size - 1] = true;
+        for(int i = size - 2; i >= 0; i--){
+            
+            bool flag = false;
+            for(int j = 1; j <= nums[i]; j++){
+                if(i + j < size && dp[i + j]){
+                    flag = true;
+                    dp[i] = true;
+                    break;
+                }
+            }
+            if(flag)
+                continue;
+            
+            dp[i] = false;
+        }
+        return dp[0];        
+    }
+};
+
+
 // Greedy Approach
 class Solution {
 public:
