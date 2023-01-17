@@ -11,24 +11,17 @@ public:
                 return true;
             
             if(nums[mid] == nums[low] && nums[mid] == nums[high]){
-                // cout<<"Condition 1" << endl;
                 low++;
                 high--;
                 continue;
             }
-            if(nums[mid] == nums[low]){
-                // cout<<"Condition 2" << endl;
-                low = mid + 1;
-            }
             else if(nums[mid] < nums[low]){
-                // cout<<"Condition 3" << endl;
                 if(target > nums[mid] && target <= nums[high])
                     low = mid + 1;
                 else
                     high = mid - 1;
             }
-            else if (nums[mid] > nums[low]){
-                // cout<<"Condition 4" << endl;
+            else if (nums[mid] >= nums[low]){
                 if(target < nums[mid] && target >= nums[low])
                     high = mid - 1;
                 else
