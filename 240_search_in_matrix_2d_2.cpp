@@ -25,20 +25,17 @@ public:
 //     }
     
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int n = matrix[0].size();
-        int m = matrix.size();
-        // int outp = bstSearch(matrix[0],0,4,target);
-        int j = 0;
-        int i = m-1;
-        while(j<n && i>=0){
-            if(matrix[i][j] == target)
+        int currRow = 0;
+        int currCol = matrix[0].size() - 1;
+        
+        while(currRow < matrix.size() && currCol > -1){
+            if(matrix[currRow][currCol]  == target)
                 return true;
-            if(matrix[i][j] > target){
-                i--;
-            }
-            else if(matrix[i][j] < target){
-                j++;
-            }
+            
+            if(matrix[currRow][currCol] > target)
+                currCol--;
+            else
+                currRow++;
         }
         
         return false;
