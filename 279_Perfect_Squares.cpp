@@ -1,5 +1,33 @@
 
 
+// Recursion + memoization
+class Solution {
+public:
+
+    int solve(vector<int> &squares, int n, vector<int> &dp){
+        if(n <= 0)
+            return 0;
+        if(dp[n] != INT_MAX)
+            return dp[n];
+        int minNums = INT_MAX;
+        for(int i = 0 ; i < squares.size(); i++){
+            if(squares[i] <= n){
+                minNums = min(minNums, 1 + solve(squares, n - squares[i], dp));
+            }
+        }
+        return dp[n] = minNums;
+    }
+
+    int numSquares(int n) {
+        vector<int> squares;
+        vector<int> dp(n + 1, INT_MAX);
+        for(int i = 1; i*i <= n; i++){
+            squares.push_back(i*i);
+        }
+        return solve(squares, n, dp);
+    }
+};
+
 // DP solution
 class Solution {
 public:
