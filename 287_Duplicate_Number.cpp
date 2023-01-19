@@ -1,4 +1,22 @@
 
+// O(n) time, O(1) space. Modify input array
+class Solution {
+public:
+    int store(vector<int> &nums, int curr){
+
+        while(curr != nums[curr]){
+            int prev = nums[curr];
+            nums[curr] = curr;
+            curr = prev;
+        }
+        return curr;
+    }
+
+    int findDuplicate(vector<int>& nums) {
+        return store(nums, 0);    
+    }
+};
+
 // O(n) time, O(n) space. Modify input array
 class Solution {
 public:
