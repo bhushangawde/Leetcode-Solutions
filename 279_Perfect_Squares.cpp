@@ -1,4 +1,28 @@
+// Recursion
+class Solution {
+public:
 
+    int solve(vector<int> &squares, int n){
+        if(n <= 0)
+            return 0;
+        int minNums = INT_MAX;
+        for(int i = 0 ; i < squares.size(); i++){
+            if(squares[i] <= n){
+                minNums = min(minNums, 1 + solve(squares, n - squares[i]));
+            }
+        }
+        return minNums;
+    }
+
+    int numSquares(int n) {
+        vector<int> squares;
+        vector<int> dp(n + 1, INT_MAX);
+        for(int i = 1; i*i <= n; i++){
+            squares.push_back(i*i);
+        }
+        return solve(squares, n);
+    }
+};
 
 // Recursion + memoization
 class Solution {
