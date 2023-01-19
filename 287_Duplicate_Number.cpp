@@ -1,4 +1,34 @@
 
+
+// O(nlogn) time, O(1) space. Binary Search
+class Solution {
+public:
+    int count(vector<int> &nums, int curr){
+        int cnt = 0;
+        for(auto elem : nums){
+            if(elem <= curr)
+                cnt++;
+        }
+        return cnt;
+    }
+
+    int findDuplicate(vector<int>& nums) {
+        int low = 0;
+        int high = nums.size() - 1;
+        int dup;
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            if(count(nums, mid) > mid){
+                dup = mid;
+                high = mid - 1;
+            }
+            else
+                low = mid + 1;
+        }
+        return dup;
+    }
+};
+
 // O(n) time, O(1) space. Modify input array
 class Solution {
 public:
