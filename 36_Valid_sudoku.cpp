@@ -1,4 +1,31 @@
-
+// Faster solution
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        
+        int mp_row[9][9] = {0};
+        int mp_col[9][9] = {0};
+        int mp_box[9][9] = {0};
+        
+        for(int i = 0; i < board.size(); i++){
+            for(int j = 0; j < board[0].size(); j++){              
+                if(board[i][j] != '.'){
+                    int idx = board[i][j] - '0' - 1;
+                    int idx_box = i / 3 * 3 + j / 3;
+                    
+                    if(mp_row[i][idx] == 1 || mp_col[j][idx] == 1 || mp_box[idx_box][idx] == 1)
+                        return false;
+                    
+                    mp_row[i][idx] = 1;
+                    mp_col[j][idx] = 1;
+                    mp_box[idx_box][idx] = 1;
+                }
+            }
+        }
+        
+        return true;
+    }
+};
 
 // Long and slower solution - O(n2) multiple loops
 class Solution {
