@@ -1,5 +1,18 @@
 // Iterative O(1) extra space
+class Solution {
+public:
 
+    int solve(int n, int k){
+        int ans = 0;
+        for(int i = 1; i <= n; i++)
+            ans = (ans + k) % i;
+        return ans;
+    }
+
+    int findTheWinner(int n, int k) {
+        return solve(n, k) + 1;
+    }
+};
 
 // Recursive with auxilliary stack only
 class Solution {
