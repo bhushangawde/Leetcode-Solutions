@@ -1,4 +1,31 @@
 
+
+// Recursion + Backtracking
+class Solution {
+public:
+    
+    int solve(vector<int>& cookies, int k, int id, vector<int>& freq){
+        if(id == cookies.size()){
+            return *max_element(freq.begin(), freq.end());
+        }
+
+        int currFreq = INT_MAX;
+        for(int i = 0; i < k; i++){
+            freq[i] += cookies[id];
+            int tempFreq = solve(cookies, k, id + 1, freq);
+            freq[i] -= cookies[id];
+            currFreq = min(currFreq, tempFreq);
+        }
+
+        return currFreq;
+    }
+
+    int distributeCookies(vector<int>& cookies, int k) {
+        vector<int> freq(k, 0);
+        return solve(cookies, k, 0, freq);
+    }
+};
+
 // Recursion + Backtracking
 class Solution {
 public:
