@@ -15,7 +15,6 @@ public:
     }
 };
 
-
 // Map
 class Solution {
 public:
