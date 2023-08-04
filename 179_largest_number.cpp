@@ -1,3 +1,29 @@
+// Using lambda function
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        vector<string> str;
+        string ans;
+
+        for(auto n : nums){
+            str.push_back(to_string(n));
+        }
+
+        sort(str.begin(), str.end(), [&](string a, string b){
+            return a + b > b + a;
+        });
+
+        for(auto s : str){
+            ans += s;
+        }
+        if(ans[0] == '0')
+            return "0";
+        return ans;
+    }
+};
+
+
+// Solution 1
 class Solution {
 public:
     static bool compare(string a, string b){
