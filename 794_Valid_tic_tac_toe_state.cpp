@@ -58,17 +58,9 @@ public:
         if(hasWonX == true && totalO == totalX){
             return false;
         }
-
         if(hasWonO == true && totalX > totalO){
             return false;
         }
-
-        // if(abs(diag) == size || abs(antiDiag) == size){
-        //     if(!hasWon)
-        //         hasWon = true;
-        //     else
-        //         return false;
-        // }
         return true;
     }
 };
